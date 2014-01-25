@@ -2,35 +2,58 @@
 using System.Collections;
 
 public class GUIInit : MonoBehaviour
-{
-    public int playerCount = 1;
+{  
     private float m_time; //time from press
+    GameObject m_Managers;
 
-	void OnMouseOver()
+    void Start()
+    {
+        m_Managers = GameObject.Find("Managers");
+    }
+
+    void OnMouseOver()
     {
         m_time += Time.deltaTime;
         if (Input.GetMouseButton(0) && m_time >= 0.5f)
         {
-            if(this.name == "GUI_less" && playerCount > 1)
+            if (this.name == "GUI_less")
             {
-                Debug.Log("Decreased player count");
-                playerCount--;
-                m_time = 0;
+                m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount--;
+                CheckLimit();
+                m_time = 0;                
             }
-            if (this.name == "GUI_more" && playerCount < 3)
+
+            if (this.name == "GUI_more")
             {
-                Debug.Log("Increased player count");
-                playerCount++;
-                m_time = 0;
+                m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount++;
+                CheckLimit();
+                m_time = 0;                
             }
-            if (this.name == "GUI_start" && playerCount < 3)
+
+            if (this.name == "GUI_start")
             {
                 Application.LoadLevel(1);
             }
-            if (this.name == "GUI_exit" && playerCount < 3)
+
+            if (this.name == "GUI_exit")
             {
                 Application.Quit();
             }
         }
-	}
+    }
+
+    void CheckLimit()
+    {
+        if (m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount < 1)
+        {
+            m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount = 1;
+        }
+
+        if (m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount > 2)
+        {
+            m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount = 2;
+        }
+
+        Debug.Log("Player Count: " + m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount);
+    }
 }

@@ -75,7 +75,7 @@ public class ObjectPool : MonoBehaviour
                     pooledObject.name = objectPrefabs[i].name;
                     pooledObject.SendMessage("OnSpawned", SendMessageOptions.DontRequireReceiver);
                     return pooledObject;
-                }
+                }                
             }
         }
 

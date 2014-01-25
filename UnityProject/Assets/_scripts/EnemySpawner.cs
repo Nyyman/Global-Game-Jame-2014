@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class EnemySpawner : MonoBehaviour 
@@ -12,14 +13,24 @@ public class EnemySpawner : MonoBehaviour
     //private float m_CurrentDelay;
     //private bool m_CanSpawn = false;
     private bool m_CurrentEnemyAmount;
+    private GameObject m_PlayerSpawner;
+    private List<GameObject> m_Spawnlocations = new List<GameObject>();
 	
 	void Start ()
     {
+        m_PlayerSpawner = GetComponent<PlayerSpawner>().gameObject;
         //m_CurrentDelay = m_SpawDelay;
+        
 	}	
 	
 	void Update () 
     {
+        if (Application.loadedLevel == 1
+            && m_Spawnlocations.Count == 0)
+        {
+            GetSpawnLocations();
+        }
+
         //if (!m_CanSpawn)
         //{
         //    UpdateSpawnDelay();
@@ -29,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         //{
             allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-            if (allEnemies.Length == 0)
+            if (m_PlayerSpawner.GetComponent<PlayerSpawner>().m_PlayersSpawned && allEnemies.Length == 0)
             {
                 SpawnEnemy();
             }
@@ -73,11 +84,24 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < max; ++i)
         {
-            Vector3 position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            int random = Random.Range(0, m_Spawnlocations.Count);
+
+            Vector3 position = m_Spawnlocations[random].transform.position;
+
             ObjectPool.instance.Instantiate(m_EnemyPrefab, position, new Quaternion(0, 0, 0, 0));
         }
 
        
        // m_CanSpawn = false;
+    }
+
+    void GetSpawnLocations()
+    {
+        Transform AllLocations = GameObject.Find("SpawnLocations").transform;
+
+        foreach (Transform child in AllLocations)
+        {
+            m_Spawnlocations.Add(child.gameObject);
+        }
     }
 }

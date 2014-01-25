@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 5.96046448e-08, y: 1.8900733, z: -2.00536561}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .200000003, y: .300000012, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 20
   m_Damage: 3
+  m_DealsDamage: 1
+  m_Parent: 
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

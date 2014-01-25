@@ -57,7 +57,7 @@ public class PlayerInput : MonoBehaviour
         ButtonInput();
         MouseInput();        
         
-        this.transform.position = Vector4.Lerp(this.transform.position, transform.position, Time.deltaTime * 100);
+       // this.transform.position = Vector4.Lerp(this.transform.position, transform.position, Time.deltaTime * 100);
        
     }
 
@@ -86,20 +86,17 @@ public class PlayerInput : MonoBehaviour
         //    }
         //}
 
-        #region Player actions
-
         if (Input.GetButtonDown("MainAction"))
         {
-            CharacterChanger.instance.SetCharacter(PlayerChartacter.hipster);
-            Debug.Log("LMB");
+            CharacterChanger.instance.SetCharacter(PlayerChartacter.hipster, "Player1");
+            //Debug.Log("LMB");
         }
 
         if (Input.GetButtonDown("AltAction"))
         {
-            Debug.Log("RMB");
+            //Debug.Log("RMB");
         }
-
-        #endregion
+       
     }
 
     void MouseInput()
@@ -111,7 +108,7 @@ public class PlayerInput : MonoBehaviour
         rotationX = MouseRotate(rotationX, "4th Axis", sensitivityX, minimumX, maxmumX);
         transform.localRotation = RotateTransform(rotationX, Vector3.up, startRotation);
 
-        float speed = 4.0f;
+        //float speed = 4.0f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         m_PlayerPlane = new Plane(Vector3.up, transform.position);
 
@@ -156,12 +153,25 @@ public class PlayerInput : MonoBehaviour
 
     void PhysicsInput()
     {
-        Vector3 movement = new Vector3(
-            Input.GetAxis("Horizontal"),
-            0.0f,
-            Input.GetAxis("Vertical"));
+        if (name == "Player1")
+        {
+            Vector3 movement = new Vector3(
+                Input.GetAxis("Horizontal"),
+                0.0f,
+                Input.GetAxis("Vertical"));
 
-        motor.Move(movement, sprint);
+            motor.Move(movement, sprint);
+        }
+
+        else if (name == "Player2")
+        {
+            Vector3 movement = new Vector3(
+                Input.GetAxis("HorizontalPL2"),
+                0.0f,
+                Input.GetAxis("VerticalPL2"));
+
+            motor.Move(movement, sprint);
+        }
 
         if (jumpState == JumpState.isGoingTo)
         {

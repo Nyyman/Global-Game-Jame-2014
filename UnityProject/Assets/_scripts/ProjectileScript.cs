@@ -5,6 +5,7 @@ public class ProjectileScript : MonoBehaviour
 {
     public float m_Speed = 20.0f;
     public int m_Damage = 3;
+    public bool m_DealsDamage = true;
 
     //private Vector3 hitPosition;
     //private bool goingToHit = false;
@@ -14,7 +15,8 @@ public class ProjectileScript : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 lastPosition;
     private int obstacleLayer;
-    private Transform hitParent; 
+    private Transform hitParent;
+    public string m_Parent;
 
     void Start()
     {      
@@ -23,7 +25,10 @@ public class ProjectileScript : MonoBehaviour
         obstacleLayer = 1 << LayerMask.NameToLayer("Obstacle") |
         1 << LayerMask.NameToLayer("Enemy");
         
-        ObjectPool.instance.Destroy(gameObject, 10);
+        ObjectPool.instance.Destroy(gameObject, 8);
+
+        //UGLY CODE AHEAD
+        DetermineSender();
     }
 
     void Update()
@@ -97,13 +102,51 @@ public class ProjectileScript : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col)
-    {      
+    {
         if(col.GetComponent<Health>() != null)
-        {           
-            col.GetComponent<Health>().TakeDamage(m_Damage);           
+        {
+            if (m_DealsDamage)
+            {
+                col.GetComponent<Health>().TakeDamage(m_Damage);
+            }
+
             isMoving = false;
-            rigidbody.isKinematic = true;
-            transform.parent = col.transform;
+            //rigidbody.isKinematic = true;
+            //transform.parent = col.transform;
+            GetComponent<CapsuleCollider>().isTrigger = false;
+
+            if (col.name == "Enemy")
+            {
+                if (m_Parent == "Player1")
+                {
+                    ScoreScript1.instance.AddPoints(100);
+                }
+
+                else
+                {
+                    ScoreScript2.instance.AddPoints(100);
+                }
+            }
+        }
+
+        else if (col.name == "Ground")
+        {         
+            m_DealsDamage = false;
+        }
+    }
+
+    void DetermineSender()
+    {
+        if (PlayerSpawner.instance.m_PlayerAmount == 2 
+            && Vector3.Distance(transform.position, GameObject.Find("Player2").transform.position) >=
+            Vector3.Distance(transform.position, GameObject.Find("Player1").transform.position))
+        {
+            m_Parent = "Player2";
+        }
+
+        else
+        {
+            m_Parent = "Player1";
         }
     }
 }

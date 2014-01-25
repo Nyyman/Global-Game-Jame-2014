@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>X:/Unity/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Users/kat12sjarnoh/Desktop/Unity/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>X:/Unity/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Users/kat12sjarnoh/Desktop/Unity/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,16 +51,21 @@
      <Compile Include="Assets\_scripts\CameraScript.cs" />
      <Compile Include="Assets\_scripts\CharacterChanger.cs" />
      <Compile Include="Assets\_scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\_scripts\GUIHealth1.cs" />
+     <Compile Include="Assets\_scripts\GUIHealth2.cs" />
      <Compile Include="Assets\_scripts\GUIInit.cs" />
      <Compile Include="Assets\_scripts\Health.cs" />
+     <Compile Include="Assets\_scripts\ManagerScript.cs" />
      <Compile Include="Assets\_scripts\MeleeAttack.cs" />
      <Compile Include="Assets\_scripts\NavigationScript.cs" />
      <Compile Include="Assets\_scripts\ObjectPool.cs" />
      <Compile Include="Assets\_scripts\PlayerInput.cs" />
      <Compile Include="Assets\_scripts\PlayerMotor.cs" />
+     <Compile Include="Assets\_scripts\PlayerSpawner.cs" />
      <Compile Include="Assets\_scripts\ProjectileScript.cs" />
      <Compile Include="Assets\_scripts\RangeAttack.cs" />
-     <Compile Include="Assets\_scripts\ScoreScript.cs" />
+     <Compile Include="Assets\_scripts\ScoreScript1.cs" />
+     <Compile Include="Assets\_scripts\ScoreScript2.cs" />
      <Compile Include="Assets\_scripts\SleepManager.cs" />
      <Compile Include="Assets\_scripts\custom_character_controller.cs" />
      <Compile Include="Assets\_scripts\player_script.cs" />

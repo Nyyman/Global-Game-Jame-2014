@@ -14,19 +14,31 @@ public class AttackChoise : MonoBehaviour
     public bool m_HasRangedAttack = true;
     public bool m_HasMeleeAttack = true;
     public CurrentAttack m_current;
-    private float m_TargerDistance;
-    private GameObject m_Player;
+    public float m_TargerDistance;
+    private GameObject m_Player1;
+    private GameObject m_Player2;
 
     void Start()
     {
-        m_Player = GameObject.Find("Player");
+        m_Player1 = GameObject.Find("Player1");
+        m_Player2 = GameObject.Find("Player2");
         CalculateTargetDistance();
         ChooseNextAttack();
     }
 
     void CalculateTargetDistance()
     {
-        m_TargerDistance = Vector3.Distance(transform.position, m_Player.transform.position);
+        float distance1 = Vector3.Distance(transform.position, m_Player1.transform.position);
+        if (PlayerSpawner.instance.m_PlayerAmount == 2)
+        {
+            float distance2 = Vector3.Distance(transform.position, m_Player2.transform.position);
+            m_TargerDistance = (Mathf.Min(distance1, distance2));
+        }
+
+        else
+        {
+            m_TargerDistance = distance1;
+        }
     }
 
     public void ChooseNextAttack()

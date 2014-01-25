@@ -11,7 +11,10 @@ public enum PlayerChartacter
 public class CharacterChanger : MonoBehaviour 
 {
     public static CharacterChanger instance;
-    GameObject m_Player;
+    public PlayerChartacter m_PlayerCharacter1;
+    public PlayerChartacter m_PlayerCharacter2;
+    GameObject m_Player1;
+    GameObject m_Player2;
 
     void Awake()
     {
@@ -20,31 +23,77 @@ public class CharacterChanger : MonoBehaviour
 
 	void Start () 
     {
-        m_Player = GameObject.Find("Player");
+        m_PlayerCharacter1 = PlayerChartacter.baby;
+        m_PlayerCharacter2 = PlayerChartacter.baby;
+        m_Player1 = GameObject.Find("Player1");
+        m_Player2 = GameObject.Find("Player2");
 	}
 	
-    public void SetCharacter(PlayerChartacter type)
+    public void SetCharacter(PlayerChartacter type, string nimi)
     {
-        switch (type)
+        if (m_Player1 == null
+           || (PlayerSpawner.instance.m_PlayerAmount == 2 && m_Player2 == null))
         {
-            case PlayerChartacter.baby:
-                 m_Player.transform.FindChild("Body0").gameObject.SetActive(false);
-                 m_Player.transform.FindChild("Body1").gameObject.SetActive(false);
-                 m_Player.transform.FindChild("Body2").gameObject.SetActive(false);
+            GetPlayers();
+        }
+
+        m_PlayerCharacter1 = type;
+
+        switch (nimi)
+        {
+            case "Player1":
+                m_PlayerCharacter1 = type;
+                switch (type)
+                {
+                    case PlayerChartacter.baby:
+                        m_Player1.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player1.transform.FindChild("Body1").gameObject.SetActive(false);
+                        m_Player1.transform.FindChild("Body2").gameObject.SetActive(false);
+                        break;
+
+                    case PlayerChartacter.hipster:
+                        m_Player1.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player1.transform.FindChild("Body1").gameObject.SetActive(true);
+                        m_Player1.transform.FindChild("Body2").gameObject.SetActive(false);
+                        break;
+
+                    case PlayerChartacter.granny:
+                        m_Player1.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player1.transform.FindChild("Body1").gameObject.SetActive(false);
+                        m_Player1.transform.FindChild("Body2").gameObject.SetActive(true);
+                        break;
+                }
                 break;
 
-            case PlayerChartacter.hipster:              
-                 m_Player.transform.FindChild("Body0").gameObject.SetActive(false);
-                 m_Player.transform.FindChild("Body1").gameObject.SetActive(true);
-                 m_Player.transform.FindChild("Body2").gameObject.SetActive(false);
-                break;
+            case "Player2":
+                m_PlayerCharacter2 = type;
+                switch (type)
+                {
+                    case PlayerChartacter.baby:
+                        m_Player2.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player2.transform.FindChild("Body1").gameObject.SetActive(false);
+                        m_Player2.transform.FindChild("Body2").gameObject.SetActive(false);
+                        break;
 
-            case PlayerChartacter.granny:
-                 m_Player.transform.FindChild("Body0").gameObject.SetActive(false);
-                 m_Player.transform.FindChild("Body1").gameObject.SetActive(false);
-                 m_Player.transform.FindChild("Body2").gameObject.SetActive(true);
+                    case PlayerChartacter.hipster:
+                        m_Player2.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player2.transform.FindChild("Body1").gameObject.SetActive(true);
+                        m_Player2.transform.FindChild("Body2").gameObject.SetActive(false);
+                        break;
+
+                    case PlayerChartacter.granny:
+                        m_Player2.transform.FindChild("Body0").gameObject.SetActive(false);
+                        m_Player2.transform.FindChild("Body1").gameObject.SetActive(false);
+                        m_Player2.transform.FindChild("Body2").gameObject.SetActive(true);
+                        break;
+                }
                 break;
         }
-                   
+    }
+
+    void GetPlayers()
+    {
+        m_Player1 = GameObject.Find("Player1");
+        m_Player2 = GameObject.Find("Player2");
     }
 }
