@@ -16,6 +16,8 @@ public class RangeAttack : MonoBehaviour
     private float m_distance1;
     private float m_distance2;
 
+    private MusicSoundScript m_mss;
+
     void Start()
     {     
         m_CurrentAttackDelay = m_AttackDelay;
@@ -25,7 +27,9 @@ public class RangeAttack : MonoBehaviour
             m_Player1 = GameObject.Find("Player1");
             m_Player2 = GameObject.Find("Player2");
             m_AttackChoise = GetComponent<AttackChoise>();
-        }       
+        }
+        GameObject tempCam = GameObject.Find("CameraContainer");
+        m_mss = tempCam.GetComponent<MusicSoundScript>();
     }
 
     void Update()
@@ -55,7 +59,7 @@ public class RangeAttack : MonoBehaviour
 
             else if (name == "Player2"
               && m_CanAttack
-              && (Input.GetButtonDown("MainAction") || Input.GetAxis("Triggers") < 0))
+              && (Input.GetButtonDown("MainActionPL2") || Input.GetAxis("Triggers2") < 0))
             {
                 Attack();
             } 
@@ -132,12 +136,15 @@ public class RangeAttack : MonoBehaviour
                     {
                         case PlayerChartacter.baby:
                             ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            m_mss.PlaySFX("Baby Attack");
                             break;
                         case PlayerChartacter.hipster:
                             ObjectPool.instance.Instantiate(ApplePrefab, Startposition, rotation);
+                            m_mss.PlaySFX("Hipster Attack");
                             break;
                             case PlayerChartacter.granny:
                             ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            m_mss.PlaySFX("Granny Attack");
                             break;
                     }
                  }

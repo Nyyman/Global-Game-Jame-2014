@@ -16,7 +16,7 @@ public class GUIInit : MonoBehaviour
         m_time += Time.deltaTime;
         if (Input.GetMouseButton(0) && m_time >= 0.5f)
         {
-            if (this.name == "GUI_less")
+            if (this.name == "GUI_less" || Input.GetAxis("Horizontal") < 0)
             {
                 m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount--;
                 CheckLimit();
@@ -39,6 +39,28 @@ public class GUIInit : MonoBehaviour
             {
                 Application.Quit();
             }
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount--;
+            CheckLimit();
+            m_time = 0;
+        }
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount++;
+            CheckLimit();
+            m_time = 0;
+        }
+
+        if (Input.GetKey(KeyCode.Joystick1Button7))
+        {
+            Application.LoadLevel(1);
         }
     }
 

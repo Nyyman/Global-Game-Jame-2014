@@ -14,6 +14,7 @@ public class MeleeAttack : MonoBehaviour
     private AttackChoise m_AttackChoise;
     private float m_distance1;
     private float m_distance2;
+    private bool m_MeleeAttack = false;
 
 	void Start () 
     {
@@ -25,6 +26,8 @@ public class MeleeAttack : MonoBehaviour
 
 	void Update () 
     {
+        m_MeleeAttack = false;
+
         if (tag != "Player")
         {
             m_distance1 = GetComponent<NavigationScript>().DistanceToPlayer1();
@@ -39,37 +42,66 @@ public class MeleeAttack : MonoBehaviour
             UpdateAttackDelay();
         }
 
+        if (tag == "Player")
+        {
+            if (name == "Player1"
+               && m_CanAttack
+               && (Input.GetButtonDown("AltAction") || Input.GetAxis("Triggers") < 0))
+            {
+                Attack();
+            }
+
+            else if (name == "Player2"
+              && m_CanAttack
+              && (Input.GetButtonDown("AltAction") || Input.GetAxis("Triggers") < 0))
+            {
+                Attack();
+            }
+        }
+
         if (m_distance1 < m_AttackRange
             || m_distance2 < m_AttackRange
             && m_CanAttack
             && m_AttackChoise.m_current == CurrentAttack.melee)
         {
-
-
             Attack();
         }
 	}
 
     void Attack()
     {
-        if (PlayerSpawner.instance.m_PlayerAmount == 2 
-            && m_distance2 < m_distance1)
-        {
-            m_Player2.GetComponent<Health>().TakeDamage(m_Damage);
-        }
-
-        else 
-        {
-            m_Player1.GetComponent<Health>().TakeDamage(m_Damage);
-        }
-
-        GetComponent<AttackChoise>().ChooseNextAttack();
         m_CanAttack = false;
 
-        if (name == "Enemy")
+        switch (tag)
         {
-            GetComponent<NavMeshAgent>().enabled = false;
+            case "Enemy":
+                {
+                    if (PlayerSpawner.instance.m_PlayerAmount == 2
+                    && m_distance2 < m_distance1)
+                    {
+                        m_Player2.GetComponent<Health>().TakeDamage(m_Damage);
+                    }
+
+                    else
+                    {
+                        m_Player1.GetComponent<Health>().TakeDamage(m_Damage);
+                    }
+
+                    GetComponent<AttackChoise>().ChooseNextAttack();
+
+                    GetComponent<NavMeshAgent>().enabled = false;
+                }
+                break;
+
+            case "Player":
+                {
+                    m_MeleeAttack = true;
+                }
+                break;
         }
+
+        
+        
     }
 
     void UpdateAttackDelay()
@@ -107,5 +139,14 @@ public class MeleeAttack : MonoBehaviour
     public float GetAttackRange()
     {
         return m_AttackRange;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (m_MeleeAttack 
+            && col.GetComponent<Health>() != null)
+        {            
+            col.GetComponent<Health>().TakeDamage(m_Damage);          
+        }
     }
 }
