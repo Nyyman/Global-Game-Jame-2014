@@ -60,6 +60,7 @@
      <Compile Include="Assets\_scripts\PlayerMotor.cs" />
      <Compile Include="Assets\_scripts\ProjectileScript.cs" />
      <Compile Include="Assets\_scripts\RangeAttack.cs" />
+     <Compile Include="Assets\_scripts\ScoreScript.cs" />
      <Compile Include="Assets\_scripts\SleepManager.cs" />
      <Compile Include="Assets\_scripts\custom_character_controller.cs" />
      <Compile Include="Assets\_scripts\player_script.cs" />

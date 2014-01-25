@@ -106,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4.80594349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -273,7 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Damage: 10
   m_AttackDelay: 3
-  m_AttackRange: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,9 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1372452f37353a4cb62c6ed712e4818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 100000, guid: c20d317730c798e48ae01b0652db183e, type: 2}
   m_AttackDelay: 3
-  m_AttackRange: 7
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

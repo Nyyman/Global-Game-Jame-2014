@@ -27,8 +27,12 @@ public class Health : MonoBehaviour
     {
         if (m_CurrentHealth < 0)
         {
-            ObjectPool.instance.Destroy(this.gameObject, 0.1f);
             m_CurrentHealth = 0;
+            ObjectPool.instance.Destroy(this.gameObject, 0.1f);
+            if (name == "Enemy")
+            {
+                ScoreScript.instance.AddPoints(100);
+            }
         }
 
         if (m_CurrentHealth >= m_HealthMax)
