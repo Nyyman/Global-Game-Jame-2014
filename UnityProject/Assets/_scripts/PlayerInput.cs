@@ -107,6 +107,10 @@ public class PlayerInput : MonoBehaviour
         //rotationX = MouseRotate(rotationX, "Mouse X", sensitivityX, minimumX, maxmumX);
         //rotationY = MouseRotate(rotationY, "Mouse Y", sensitivityY, minimumY, maxmumY);
         //transform.localRotation = RotateTransform(rotationX, Vector3.up, startRotation);
+
+        rotationX = MouseRotate(rotationX, "4th Axis", sensitivityX, minimumX, maxmumX);
+        transform.localRotation = RotateTransform(rotationX, Vector3.up, startRotation);
+
         float speed = 4.0f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         m_PlayerPlane = new Plane(Vector3.up, transform.position);

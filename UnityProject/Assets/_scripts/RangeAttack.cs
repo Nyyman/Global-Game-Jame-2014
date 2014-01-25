@@ -67,7 +67,7 @@ public class RangeAttack : MonoBehaviour
                 break;
 
             case "Player":
-                if (Input.GetButtonDown("MainAction"))
+                if (Input.GetButtonDown("MainAction") || Input.GetAxis("Triggers") < 0)
                  {  
                      Startposition = transform.FindChild("ProjectileStart").transform.position;
                      rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x,
