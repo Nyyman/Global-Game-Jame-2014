@@ -6,15 +6,17 @@ public class MeleeAttack : MonoBehaviour
 {
     public int m_Damage = 10;
     public int m_AttackDelay = 3;
-    public int m_AttackRange = 1;
+    private float m_AttackRange = 1.6f;
     private GameObject m_Player;    
     private float m_CurrentAttackDelay = 0;
     private bool m_CanAttack = true;    
+    private AttackChoise m_AttackChoise;
 
 	void Start () 
     {
         m_Player = GameObject.Find("Player");
         m_CurrentAttackDelay = m_AttackDelay;
+        m_AttackChoise = GetComponent<AttackChoise>();
 	}
 
 	void Update () 
@@ -25,7 +27,8 @@ public class MeleeAttack : MonoBehaviour
         }
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < m_AttackRange
-            && m_CanAttack)
+            && m_CanAttack
+            && m_AttackChoise.m_current == CurrentAttack.melee)
         {
             Attack();
         }
@@ -34,7 +37,13 @@ public class MeleeAttack : MonoBehaviour
     void Attack()
     {
         m_Player.GetComponent<Health>().TakeDamage(m_Damage);
+        GetComponent<AttackChoise>().ChooseNextAttack();
         m_CanAttack = false;
+
+        if (name == "Enemy")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
     }
 
     void UpdateAttackDelay()
@@ -51,9 +60,15 @@ public class MeleeAttack : MonoBehaviour
     {
         m_CurrentAttackDelay = m_AttackDelay;
         m_CanAttack = true;
+        if (name == "Enemy")
+        {
+            GetComponent<NavMeshAgent>().enabled = true;
+            transform.LookAt(m_Player.transform.position);
+        }
     }
 
-   
-
-    
+    public float GetAttackRange()
+    {
+        return m_AttackRange;
+    }
 }
