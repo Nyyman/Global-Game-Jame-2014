@@ -18,6 +18,10 @@ public class PlayerInput : MonoBehaviour
     private float maxmumY = 85.0f;
     private float rotationY = 0.0f;
 
+    private GameObject m_Ground;
+    Plane m_PlayerPlane = new Plane();
+    Transform m_MarkerObject;
+    
     //Layermask
     public LayerMask layerMask;
 
@@ -40,6 +44,7 @@ public class PlayerInput : MonoBehaviour
     {
         motor = GetComponent<PlayerMotor>();
         startRotation = transform.localRotation;
+        m_Ground = GameObject.Find("Ground");
 
         //if (!Screen.lockCursor)
         //{
@@ -50,7 +55,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         ButtonInput();
-        MouseInput();
+        MouseInput();        
         
         this.transform.position = Vector4.Lerp(this.transform.position, transform.position, Time.deltaTime * 100);
        
@@ -85,6 +90,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("MainAction"))
         {
+            CharacterChanger.instance.SetCharacter(PlayerChartacter.hipster);
             Debug.Log("LMB");
         }
 
@@ -98,10 +104,22 @@ public class PlayerInput : MonoBehaviour
 
     void MouseInput()
     {
-        rotationX = MouseRotate(rotationX, "Mouse X", sensitivityX, minimumX, maxmumX);
-        rotationY = MouseRotate(rotationY, "Mouse Y", sensitivityY, minimumY, maxmumY);
-        transform.localRotation = RotateTransform(rotationX, Vector3.up, startRotation);
-    }
+        //rotationX = MouseRotate(rotationX, "Mouse X", sensitivityX, minimumX, maxmumX);
+        //rotationY = MouseRotate(rotationY, "Mouse Y", sensitivityY, minimumY, maxmumY);
+        //transform.localRotation = RotateTransform(rotationX, Vector3.up, startRotation);
+        float speed = 4.0f;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        m_PlayerPlane = new Plane(Vector3.up, transform.position);
+
+        float rayDistance = 0.0f;
+        if (m_PlayerPlane.Raycast(ray, out rayDistance))
+        {
+            var targetPoint = ray.GetPoint(rayDistance);
+            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+           // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+            transform.rotation = targetRotation;
+        }
+      }
 
     float MouseRotate(float rotation, string axisName, float sensitivity, float minRotation, float maxRotation)
     {
@@ -135,9 +153,9 @@ public class PlayerInput : MonoBehaviour
     void PhysicsInput()
     {
         Vector3 movement = new Vector3(
-            Input.GetAxis("Vertical"),
+            Input.GetAxis("Horizontal"),
             0.0f,
-            Input.GetAxis("Horizontal"));
+            Input.GetAxis("Vertical"));
 
         motor.Move(movement, sprint);
 
@@ -155,7 +173,6 @@ public class PlayerInput : MonoBehaviour
 
             jumpState = JumpState.cant;
         }
-
     }
 
     void OnCollisionEnter(Collision col)

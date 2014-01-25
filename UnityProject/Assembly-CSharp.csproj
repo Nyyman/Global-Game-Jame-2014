@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_scripts\AttackChoise.cs" />
+     <Compile Include="Assets\_scripts\BodiesScripts.cs" />
      <Compile Include="Assets\_scripts\CameraScript.cs" />
      <Compile Include="Assets\_scripts\CharacterChanger.cs" />
      <Compile Include="Assets\_scripts\EnemySpawner.cs" />
