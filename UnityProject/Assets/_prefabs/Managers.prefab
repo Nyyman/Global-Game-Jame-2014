@@ -48,7 +48,10 @@ MonoBehaviour:
   - {fileID: 100002, guid: dbfd366d42494ca4fa4aa8fcb2645b86, type: 2}
   - {fileID: 100004, guid: c7029e8d69cefb240ba36858c76f9b5e, type: 2}
   - {fileID: 100000, guid: c20d317730c798e48ae01b0652db183e, type: 2}
-  amountToBuffer: 0200000002000000320000001e0000001e000000
+  - {fileID: 100002, guid: f0b81592343f052499b7b894bcc612be, type: 2}
+  - {fileID: 100000, guid: 024b03b59e025784e9d08dc9ac19d138, type: 2}
+  - {fileID: 100004, guid: dba735fe377bb6e4bb8387b5fe81e741, type: 2}
+  amountToBuffer: 0200000002000000320000001e0000001e0000001e0000001e0000001e000000
   defaultBufferAmount: 5
 --- !u!114 &11400002
 MonoBehaviour:
@@ -61,7 +64,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd330ea8155a02547a7d6065a01bfc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EnemyPrefab: {fileID: 100004, guid: c7029e8d69cefb240ba36858c76f9b5e, type: 2}
+  m_Teddybear: {fileID: 100002, guid: f0b81592343f052499b7b894bcc612be, type: 2}
+  m_Protester: {fileID: 100000, guid: 024b03b59e025784e9d08dc9ac19d138, type: 2}
+  m_Pill: {fileID: 100004, guid: dba735fe377bb6e4bb8387b5fe81e741, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
