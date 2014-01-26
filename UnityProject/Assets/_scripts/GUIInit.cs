@@ -4,11 +4,13 @@ using System.Collections;
 public class GUIInit : MonoBehaviour
 {  
     private float m_time; //time from press
+    GameObject m_GUI_base;
     GameObject m_Managers;
 
     void Start()
     {
         m_Managers = GameObject.Find("Managers");
+        m_GUI_base = GameObject.Find("GUI").transform.FindChild("GUI_base").gameObject;
     }
 
     void OnMouseOver()
@@ -20,6 +22,7 @@ public class GUIInit : MonoBehaviour
             {
                 m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount--;
                 CheckLimit();
+                UpdateBase();
                 m_time = 0;                
             }
 
@@ -27,6 +30,7 @@ public class GUIInit : MonoBehaviour
             {
                 m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount++;
                 CheckLimit();
+                UpdateBase();
                 m_time = 0;                
             }
 
@@ -48,6 +52,7 @@ public class GUIInit : MonoBehaviour
         {
             m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount--;
             CheckLimit();
+            UpdateBase();
             m_time = 0;
         }
 
@@ -55,6 +60,7 @@ public class GUIInit : MonoBehaviour
         {
             m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount++;
             CheckLimit();
+            UpdateBase();
             m_time = 0;
         }
 
@@ -75,7 +81,19 @@ public class GUIInit : MonoBehaviour
         {
             m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount = 2;
         }
+    }
 
-        Debug.Log("Player Count: " + m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount);
+    void UpdateBase()
+    {
+        switch (m_Managers.GetComponent<PlayerSpawner>().m_PlayerAmount)
+        {
+            case 1:               
+                m_GUI_base.renderer.material = m_GUI_base.GetComponent<MaterialContainer>().m_Material1;
+                break;
+
+            case 2:
+                m_GUI_base.renderer.material = m_GUI_base.GetComponent<MaterialContainer>().m_Material2;
+                break;
+        }
     }
 }

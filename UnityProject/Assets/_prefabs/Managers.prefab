@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c3b5875c9076d40b6daf8d68baf69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerAmount: 2
+  m_PlayerAmount: 1
   m_Player1Prefab: {fileID: 100016, guid: a6c1d41f44f22ce4f9d133a9407ec64a, type: 2}
   m_Player2Prefab: {fileID: 100016, guid: 6d96f2452e0926241abc26e06b7a1d98, type: 2}
   m_Player1StartLoc: {x: 0, y: 0, z: 0}
