@@ -8,6 +8,7 @@ public class NavigationScript : MonoBehaviour
     private List<GameObject> m_NavigationPoints;
     private GameObject m_Player1;
     private GameObject m_Player2;
+    private GameObject m_ClosestPlayer;
     private NavMeshAgent m_NavMeshAgent;
     public float m_NavigationOffset = 0.01f;
     private float m_MeleeRange = 1.6f;
@@ -21,7 +22,7 @@ public class NavigationScript : MonoBehaviour
         m_NavigationPoints = new List<GameObject>();
         //SetNavigationPoints();
         m_Player1 = GameObject.Find("Player1");
-        m_Player1 = GameObject.Find("Player2");
+        m_Player2 = GameObject.Find("Player2");
         m_NavMeshAgent = GetComponent<NavMeshAgent>();        
         SetNewDestination();
 	}	
@@ -49,33 +50,23 @@ public class NavigationScript : MonoBehaviour
 
     void SetNewDestination()
     {
-       //int random = Random.Range(0, m_NavigationPoints.Count);
-       //m_NavMeshAgent.destination = m_NavigationPoints[random].transform.position
+        SetClosestPlayer();
 
         if (m_NavMeshAgent.enabled)
         {   
-            if(DistanceToPlayer() > m_MinNavigationDistance)
+            if(DistanceToClosestPlayer() > m_MinNavigationDistance)
             {
-                if (PlayerSpawner.instance.m_PlayerAmount == 2
-                    && DistanceToPlayer2() < DistanceToPlayer1())
-                {
-                    m_NavMeshAgent.destination = m_Player2.transform.position;
-                }
-
-                else
-                {
-                    m_NavMeshAgent.destination = m_Player1.transform.position;
-                }
+                m_NavMeshAgent.destination = m_ClosestPlayer.transform.position;              
             }
 
-            else 
-            {
-                m_NavMeshAgent.destination = transform.position;
-            }          
+            //else 
+            //{
+            //    m_NavMeshAgent.destination = transform.position;
+            //}          
         }       
     }
 
-    public float DistanceToPlayer()
+    public void SetClosestPlayer()
     {
         if (m_Player1 == null
             || (PlayerSpawner.instance.m_PlayerAmount == 2 && m_Player2 == null))
@@ -88,11 +79,19 @@ public class NavigationScript : MonoBehaviour
         if (PlayerSpawner.instance.m_PlayerAmount == 2)
         {
             float distance2 = DistanceToPlayer2();
-            return (Mathf.Min(distance1, distance2));
+            if (distance2 < distance1)
+            {
+                m_ClosestPlayer = m_Player2;
+            }
+
+            else
+            {
+                m_ClosestPlayer = m_Player1;
+            }
         }
 
         else
-            return distance1;
+            m_ClosestPlayer = m_Player1;
     }
 
     public float DistanceToPlayer1()
@@ -103,6 +102,11 @@ public class NavigationScript : MonoBehaviour
     public float DistanceToPlayer2()
     {
         return (Vector3.Distance(transform.position, m_Player2.transform.position));
+    }
+
+    public float DistanceToClosestPlayer()
+    {
+        return (Vector3.Distance(transform.position, m_ClosestPlayer.transform.position));
     }
 
     void GetPlayers()
