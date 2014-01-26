@@ -39,13 +39,14 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Users/kat12sjarnoh/Desktop/Unity/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>X:/Unity/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Users/kat12sjarnoh/Desktop/Unity/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>X:/Unity/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_scripts\ArenaSwitcher.cs" />
      <Compile Include="Assets\_scripts\AttackChoise.cs" />
      <Compile Include="Assets\_scripts\BodiesScripts.cs" />
      <Compile Include="Assets\_scripts\CameraScript.cs" />
