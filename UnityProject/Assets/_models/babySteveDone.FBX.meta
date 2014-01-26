@@ -6,12 +6,32 @@ ModelImporter:
     100000: //RootNode
     100002: Capsule001
     100004: Helix001
+    100006: hand1
+    100008: hand2
+    100010: leg1
+    100012: leg2
     400000: //RootNode
     400002: Capsule001
     400004: Helix001
+    400006: hand1
+    400008: hand2
+    400010: leg1
+    400012: leg2
     2300000: Capsule001
+    2300002: hand1
+    2300004: hand2
+    2300006: leg1
+    2300008: leg2
     3300000: Capsule001
+    3300002: hand1
+    3300004: hand2
+    3300006: leg1
+    3300008: leg2
     4300000: Capsule001
+    4300002: hand1
+    4300004: hand2
+    4300006: leg1
+    4300008: leg2
     9500000: //RootNode
   materials:
     importMaterials: 1
