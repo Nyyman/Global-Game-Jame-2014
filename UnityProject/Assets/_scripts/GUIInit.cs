@@ -15,6 +15,7 @@ public class GUIInit : MonoBehaviour
 
     void OnMouseOver()
     {
+        Debug.Log(this.name);
         m_time += Time.deltaTime;
         if (Input.GetMouseButton(0) && m_time >= 0.5f)
         {
