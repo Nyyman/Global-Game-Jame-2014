@@ -47,7 +47,12 @@ public class PlayerSpawner : MonoBehaviour
             case 2:
                 ObjectPool.instance.Instantiate(m_Player1Prefab, m_Player1StartLoc, new Quaternion(0, 0, 0, 0));
                 ObjectPool.instance.Instantiate(m_Player2Prefab, m_Player2StartLoc, new Quaternion(0, 0, 0, 0));
+                GameObject.Find("GUI").transform.FindChild("Health2").GetComponent<GUIHealth1>().UpdateUI();
+                GameObject.Find("GUI").GetComponent<ScoreScript2>().AddPoints(0);
                 break;
         }
+
+        GameObject.Find("GUI").transform.FindChild("Health1").GetComponent<GUIHealth1>().UpdateUI();
+        GameObject.Find("GUI").GetComponent<ScoreScript1>().AddPoints(0);        
     }
 }

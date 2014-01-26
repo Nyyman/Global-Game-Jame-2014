@@ -34,7 +34,7 @@ public class ScoreScript1 : MonoBehaviour
 
     void UpdateUI()
     {
-        string text = "Score: " + m_Score.ToString();
+        string text = m_Score.ToString();
         m_GUI.transform.FindChild("Score1").GetComponent<GUIText>().text = text;
     }
 }

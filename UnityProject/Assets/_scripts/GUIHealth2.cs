@@ -34,7 +34,7 @@ public class GUIHealth2 : MonoBehaviour
             m_Player2 = GameObject.Find("Player2");
         }
 
-        string text = "Health: " + m_Player2.GetComponent<Health>().GetHealth().ToString();
+        string text = m_Player2.GetComponent<Health>().GetHealth().ToString();
         m_GUI.transform.FindChild("Health2").GetComponent<GUIText>().text = text;
     }
 }

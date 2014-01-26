@@ -33,7 +33,7 @@ public class GUIHealth1 : MonoBehaviour
             m_Player1 = GameObject.Find("Player1");
         }
 
-        string text = "Health: " + m_Player1.GetComponent<Health>().GetHealth().ToString();
+        string text = m_Player1.GetComponent<Health>().GetHealth().ToString();
         m_GUI.transform.FindChild("Health1").GetComponent<GUIText>().text = text;
     }
 }
