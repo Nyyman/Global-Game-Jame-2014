@@ -8,6 +8,9 @@ public class ArenaSwitcher : MonoBehaviour
     public Material[] floorMaterials;
     public Material[] wallMaterials;
     public GameObject manager;
+    public GameObject babyProps;
+    public GameObject hipsterProps;
+    public GameObject grannyProps;
 
 	// Use this for initialization
 	void Start ()
@@ -16,26 +19,26 @@ public class ArenaSwitcher : MonoBehaviour
         if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.baby)
         {
             ArenaFloor.renderer.material = floorMaterials[0];
+            ArenaBorders.renderer.material = wallMaterials[0];
+            babyProps.SetActive(true);
+            hipsterProps.SetActive(false);
+            grannyProps.SetActive(false);
         }
         else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.hipster)
         {
             ArenaFloor.renderer.material = floorMaterials[1];
+            ArenaBorders.renderer.material = wallMaterials[1];
+            babyProps.SetActive(false);
+            hipsterProps.SetActive(true);
+            grannyProps.SetActive(false);
         }
         else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.granny)
         {
             ArenaFloor.renderer.material = floorMaterials[2];
-        }
-        if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.baby)
-        {
-            ArenaBorders.renderer.material = wallMaterials[0];
-        }
-        else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.hipster)
-        {
-            ArenaBorders.renderer.material = wallMaterials[1];
-        }
-        else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.granny)
-        {
             ArenaBorders.renderer.material = wallMaterials[2];
+            babyProps.SetActive(false);
+            hipsterProps.SetActive(false);
+            grannyProps.SetActive(true);
         }
 	}
 	
@@ -45,26 +48,26 @@ public class ArenaSwitcher : MonoBehaviour
         if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.baby)
         {
             ArenaFloor.renderer.material = floorMaterials[0];
+            ArenaBorders.renderer.material = wallMaterials[0];
+            babyProps.SetActive(true);
+            hipsterProps.SetActive(false);
+            grannyProps.SetActive(false);
         }
         else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.hipster)
         {
             ArenaFloor.renderer.material = floorMaterials[1];
+            ArenaBorders.renderer.material = wallMaterials[1];
+            babyProps.SetActive(false);
+            hipsterProps.SetActive(true);
+            grannyProps.SetActive(false);
         }
         else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.granny)
         {
             ArenaFloor.renderer.material = floorMaterials[2];
-        }
-        if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.baby)
-        {
-            ArenaBorders.renderer.material = wallMaterials[0];
-        }
-        else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.hipster)
-        {
-            ArenaBorders.renderer.material = wallMaterials[1];
-        }
-        else if (CharacterChanger.instance.m_PlayerCharacter1 == PlayerChartacter.granny)
-        {
             ArenaBorders.renderer.material = wallMaterials[2];
+            babyProps.SetActive(false);
+            hipsterProps.SetActive(false);
+            grannyProps.SetActive(true);
         }
 	}
 }

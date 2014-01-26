@@ -41,6 +41,16 @@ public class Health : MonoBehaviour
             {
                 //TODO
                 //GAME OVER
+                //GameObject.Find("Managers").transform.FindChild("GameOver").GetComponent<GameOver>().Activate();
+
+                //Destroy(GameObject.Find("GUI"));
+                //Application.LoadLevel(0);
+                Application.Quit();
+
+
+            //Application.LoadLevel(1);
+
+
             }
 
         }

@@ -6,7 +6,8 @@ public class RangeAttack : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
     public GameObject ApplePrefab;
-    public GameObject DumbellPrefab; 
+    public GameObject DumbellPrefab;
+    public GameObject BulletPrefab; 
     public float m_AttackDelay = 0.3f;
     private int m_AttackRange = 7;
     private GameObject m_Player1;
@@ -109,7 +110,7 @@ public class RangeAttack : MonoBehaviour
                             ObjectPool.instance.Instantiate(ApplePrefab, Startposition, rotation);
                             break;
                         case PlayerChartacter.granny:
-                            ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            ObjectPool.instance.Instantiate(BulletPrefab, Startposition, rotation);
                             break;
                     }
                 }
@@ -144,7 +145,7 @@ public class RangeAttack : MonoBehaviour
                             m_mss.PlaySFX("Hipster Attack");
                             break;
                             case PlayerChartacter.granny:
-                            ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            ObjectPool.instance.Instantiate(BulletPrefab, Startposition, rotation);
                             m_mss.PlaySFX("Granny Attack");
                             break;
                     }

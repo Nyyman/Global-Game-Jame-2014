@@ -5,7 +5,7 @@ public class ScoreScript1 : MonoBehaviour
 {
     public static ScoreScript1 instance;
     private GameObject m_GUI;
-    private int m_Score;
+    public int m_Score;
 
     void Awake()
     {
