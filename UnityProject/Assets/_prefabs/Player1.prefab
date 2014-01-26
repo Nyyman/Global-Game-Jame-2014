@@ -1380,6 +1380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 100000, guid: c20d317730c798e48ae01b0652db183e, type: 2}
   ApplePrefab: {fileID: 100002, guid: dbfd366d42494ca4fa4aa8fcb2645b86, type: 2}
+  DumbellPrefab: {fileID: 100002, guid: 24b2839cf7ee7cf4283f453562ec4bf8, type: 2}
   m_AttackDelay: .5
   m_CurrentAttackDelay: 0
 --- !u!114 &11400002

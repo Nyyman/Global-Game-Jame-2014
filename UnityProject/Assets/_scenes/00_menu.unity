@@ -81,6 +81,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: objectPrefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: amountToBuffer.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.15162587
@@ -109,11 +117,53 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: objectPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 100002, guid: 24b2839cf7ee7cf4283f453562ec4bf8, type: 2}
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: objectPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 100004, guid: dba735fe377bb6e4bb8387b5fe81e741, type: 2}
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: amountToBuffer.Array.data[8]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
+      propertyPath: amountToBuffer.Array.data[9]
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c24a913d84e2d45a32012192b876b0, type: 2}
   m_RootGameObject: {fileID: 1127117578}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &111158403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 111158404}
+  m_Layer: 0
+  m_Name: hipsterArenaProbs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111158404
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111158403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2106533488}
 --- !u!1 &180357907
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +290,58 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &506779640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 506779641}
+  m_Layer: 0
+  m_Name: babyArenaProbs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506779641
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506779640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2106533488}
+--- !u!1 &518794493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 518794494}
+  m_Layer: 0
+  m_Name: grannyArenaProps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &518794494
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 518794493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2106533488}
 --- !u!1 &635810837
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +633,9 @@ MonoBehaviour:
   - {fileID: 100002, guid: f0b81592343f052499b7b894bcc612be, type: 2}
   - {fileID: 100000, guid: 024b03b59e025784e9d08dc9ac19d138, type: 2}
   - {fileID: 100004, guid: dba735fe377bb6e4bb8387b5fe81e741, type: 2}
-  amountToBuffer: 0200000002000000320000001e0000001e0000001e0000001e0000001e000000
+  - {fileID: 100002, guid: 24b2839cf7ee7cf4283f453562ec4bf8, type: 2}
+  - {fileID: 100004, guid: dba735fe377bb6e4bb8387b5fe81e741, type: 2}
+  amountToBuffer: 0200000002000000320000001e0000001e0000001e0000001e0000001e0000001e0000001e000000
   defaultBufferAmount: 5
 --- !u!4 &1127117584
 Transform:
@@ -774,3 +878,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material1: {fileID: 2100000, guid: 5f3d850ba1c0d3e48b2b918f9fc04edc, type: 2}
   m_Material2: {fileID: 2100000, guid: 5e860eb17e9bf664b9d628fa7dd27b2a, type: 2}
+--- !u!1 &2106533487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2106533488}
+  m_Layer: 0
+  m_Name: Props
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2106533488
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106533487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.15162587, y: .688667774, z: -3.32102013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 506779641}
+  - {fileID: 111158404}
+  - {fileID: 518794494}
+  m_Father: {fileID: 0}

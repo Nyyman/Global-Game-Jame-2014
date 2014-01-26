@@ -5,7 +5,8 @@ using System.Collections;
 public class RangeAttack : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
-    public GameObject ApplePrefab;   
+    public GameObject ApplePrefab;
+    public GameObject DumbellPrefab; 
     public float m_AttackDelay = 0.3f;
     private int m_AttackRange = 7;
     private GameObject m_Player1;
@@ -102,7 +103,7 @@ public class RangeAttack : MonoBehaviour
                     switch (target)
                     {
                         case PlayerChartacter.baby:
-                            ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            ObjectPool.instance.Instantiate(DumbellPrefab, Startposition, rotation);
                             break;
                         case PlayerChartacter.hipster:
                             ObjectPool.instance.Instantiate(ApplePrefab, Startposition, rotation);
@@ -135,7 +136,7 @@ public class RangeAttack : MonoBehaviour
                      switch (target)
                     {
                         case PlayerChartacter.baby:
-                            ObjectPool.instance.Instantiate(ProjectilePrefab, Startposition, rotation);
+                            ObjectPool.instance.Instantiate(DumbellPrefab, Startposition, rotation);
                             m_mss.PlaySFX("Baby Attack");
                             break;
                         case PlayerChartacter.hipster:
