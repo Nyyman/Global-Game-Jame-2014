@@ -51,6 +51,7 @@
      <Compile Include="Assets\_scripts\CameraScript.cs" />
      <Compile Include="Assets\_scripts\CharacterChanger.cs" />
      <Compile Include="Assets\_scripts\DUMMYDELELTEME.cs" />
+     <Compile Include="Assets\_scripts\DestroyAfterFall.cs" />
      <Compile Include="Assets\_scripts\EnemySpawner.cs" />
      <Compile Include="Assets\_scripts\GUIHealth1.cs" />
      <Compile Include="Assets\_scripts\GUIHealth2.cs" />

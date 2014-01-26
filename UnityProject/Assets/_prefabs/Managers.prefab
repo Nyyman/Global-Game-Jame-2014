@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerCharacter1: 0
-  m_PlayerCharacter2: 0
+  m_PlayerCharacter2: 1
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

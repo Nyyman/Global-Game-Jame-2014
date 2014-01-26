@@ -41,7 +41,7 @@ public class PlayerSpawner : MonoBehaviour
             case 1:
                 ObjectPool.instance.Instantiate(m_Player1Prefab, m_Player1StartLoc, new Quaternion(0, 0, 0, 0));
                 m_GUI.transform.Find("Health2").gameObject.SetActive(false);
-                m_GUI.transform.Find("Score2").gameObject.SetActive(false);
+                m_GUI.transform.Find("Score2").gameObject.SetActive(false);               
                 break;
 
             case 2:

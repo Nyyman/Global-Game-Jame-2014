@@ -115,7 +115,7 @@ public class ProjectileScript : MonoBehaviour
             //transform.parent = col.transform;
             GetComponent<CapsuleCollider>().isTrigger = false;
 
-            if (col.name == "Enemy")
+            if (col.tag == "Enemy")
             {
                 if (m_Parent == "Player1")
                 {

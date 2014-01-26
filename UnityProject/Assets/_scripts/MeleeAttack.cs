@@ -118,7 +118,7 @@ public class MeleeAttack : MonoBehaviour
     {
         m_CurrentAttackDelay = m_AttackDelay;
         m_CanAttack = true;
-        if (name == "Enemy")
+        if (tag == "Enemy")
         {
             GetComponent<NavMeshAgent>().enabled = true;
 

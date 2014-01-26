@@ -26,6 +26,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -42,7 +44,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 132: {fileID: 13200002}
-  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Score1
   m_TagString: Untagged
@@ -93,7 +94,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 132: {fileID: 13200006}
-  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Score2
   m_TagString: Untagged
@@ -235,10 +235,10 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af127a00252cb1647a32294448184e80, type: 3}
+  m_Script: {fileID: 11500000, guid: ba79fa9d9fe475a4c9fb9b911daa89f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400006
@@ -257,10 +257,10 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100010}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba79fa9d9fe475a4c9fb9b911daa89f7, type: 3}
+  m_Script: {fileID: 11500000, guid: af127a00252cb1647a32294448184e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!132 &13200000

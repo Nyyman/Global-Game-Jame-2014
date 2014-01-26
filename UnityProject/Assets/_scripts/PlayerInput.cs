@@ -88,8 +88,7 @@ public class PlayerInput : MonoBehaviour
         //}
 
         if (Input.GetButtonDown("MainAction"))
-        {
-            CharacterChanger.instance.SetCharacter(PlayerChartacter.hipster, "Player1");
+        {            
             //Debug.Log("LMB");
         }
 
@@ -97,6 +96,25 @@ public class PlayerInput : MonoBehaviour
         {
             //Debug.Log("RMB");
         }
+
+        if (name == "Player1")
+        {
+            if (Input.GetButtonDown("NextCharacter"))
+            {
+                CharacterChanger.instance.SetNextCharacter("Player1");
+            }
+        }
+
+        if (name == "Player2")
+        {
+            if (Input.GetButtonDown("NextCharacterPL2"))
+            {
+                CharacterChanger.instance.SetNextCharacter("Player2");
+            }
+        }
+
+
+       
        
     }
 
